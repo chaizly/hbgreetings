@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 45-летием, Мама!</title>
+    
+    <!-- ШРИФТЫ С GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Базовый сброс */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            padding: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Основная карточка */
+        .card {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 252, 250, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 50px 45px 40px;
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.12),
+                0 0 0 1px rgba(212, 175, 55, 0.15),
+                inset 0 0 80px rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ЗАГОЛОВОК*/
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 3.2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #8B2F4E, #C0395A, #8B2F4E);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease-in-out infinite;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Подзаголовок — изящный курсив */
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: 1.6rem;
+            text-align: center;
+            color: #7a5a5a;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 18px;
+            position: relative;
+        }
+
+        .subtitle::after {
+            content: '✦';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fdfcfb;
+            padding: 0 15px;
+            color: #c9a84c;
+            font-size: 1.2rem;
+        }
+
+        /* ВИДЕО-КОНТЕЙНЕР — строгий 16:9 */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.15),
+                0 0 0 3px rgba(255, 215, 0, 0.15),
+                0 0 0 6px rgba(255, 255, 255, 0.5);
+            margin: 10px 0 30px;
+            background: #1a1a1a;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* видео заполняет контейнер без искажений */
+            display: block;
+            background: #1a1a1a;
+        }
+
+        /* Кастомные элементы управления*/
+        .video-wrapper video::-webkit-media-controls {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 0 0 32px 32px;
+        }
+
+        /* ПОДПИСЬ ПОД ВИДЕО */
+        .video-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #6d4c4c;
+            letter-spacing: 1.5px;
+            margin-top: -15px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .video-caption span {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 4px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* ТЕКСТ ПОЗДРАВЛЕНИЯ */
+        .poem {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            line-height: 2;
+            text-align: center;
+            color: #2c1810;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(255, 248, 240, 0.6), rgba(255, 235, 220, 0.3));
+            border-radius: 40px;
+            border-left: 4px solid #c9a84c;
+            border-right: 4px solid #c9a84c;
+            position: relative;
+            margin: 20px 0 25px;
+        }
+
+        .poem .highlight {
+            font-weight: 700;
+            color: #8B2F4E;
+            font-style: italic;
+        }
+
+        .poem .age {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #c9a84c;
+            text-shadow: 0 2px 8px rgba(201, 168, 76, 0.2);
+        }
+
+        /* ФИНАЛЬНАЯ СТРОКА*/
+        .footer {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 1.6rem;
+            text-align: center;
+            color: #4a2c2c;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .footer .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: #8a6a6a;
+            display: block;
+            margin-top: 4px;
+            letter-spacing: 4px;
+        }
+
+        .footer .signature::before {
+            content: '— ';
+            color: #c9a84c;
+        }
+
+        /* ЛЕТАЮЩИЕ СЕРДЕЧКИ (фон)*/
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .float-item {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.12;
+            animation: floatUp 18s linear infinite;
+            bottom: -60px;
+            transform: rotate(0deg);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.12; }
+            50% { opacity: 0.20; }
+            100% { transform: translateY(-120vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        /* МАЛЕНЬКИЙ ЭКРАН (телефон) */
+        @media (max-width: 600px) {
+            .card {
+                padding: 25px 18px 30px;
+                border-radius: 40px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+
+            .poem {
+                font-size: 1.1rem;
+                padding: 20px 15px;
+                line-height: 1.8;
+            }
+
+            .poem .age {
+                font-size: 1.4rem;
+            }
+
+            .footer {
+                font-size: 1.3rem;
+            }
+
+            .video-caption {
+                font-size: 1.0rem;
+            }
+
+            .video-wrapper {
+                border-radius: 20px;
+            }
+
+            .video-wrapper video::-webkit-media-controls {
+                border-radius: 0 0 20px 20px;
+            }
+
+            .float-item {
+                font-size: 18px;
+                opacity: 0.08;
+            }
+        }
+
+        /* Для очень больших экранов — ограничиваем ширину */
+        @media (min-width: 1400px) {
+            .card {
+                max-width: 1000px;
+                padding: 60px 55px;
+            }
+            h1 { font-size: 4rem; }
+            .poem { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-elements" id="floatContainer"></div>
+
+    <div class="card">
+
+        <h1>С Днём Рождения, Мама</h1>
+        <div class="subtitle">45 — возраст совершенной красоты</div>
+
+        <div class="video-wrapper">
+            <video controls preload="metadata" playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео. Пожалуйста, обновите его.
+            </video>
+        </div>
+
+        <!-- Подпись под видео -->
+        <div class="video-caption">
+            <span>✨ немного волшебства... ✨</span>
+        </div>
+
+        <!-- Текст поздравления -->
+        <div class="poem">
+            Мамочка, <span class="highlight">наша великолепная</span>,<br>
+            Сегодня тебе — <span class="age">45</span> — прекрасный возраст!<br>
+            Ты — наш уют, нежность и свет,<br>
+            Человек, дороже которого нет.<br><br>
+            Пусть каждый день дарит <span class="highlight">радость и тепло</span>,<br>
+            А сердце всегда будет <span class="highlight">молодым</span>.<br>
+            Спасибо, что ты есть. Мы тебя <span class="highlight">очень любим!</span>.
+        </div>
+
+        <div class="footer">
+            ❤️ Мы тебя любим! ❤️
+            <span class="signature"></span>
+        </div>
+
+    </div>
+
+    <script>
+        // Генерируем красивые парящие элементы (золотые и розовые)
+        const container = document.getElementById('floatContainer');
+        const items = ['✦', '✧', '❤️', '🌸', '🌹', '✨', '•'];
+        
+        for (let i = 0; i < 30; i++) {
+            const el = document.createElement('div');
+            el.className = 'float-item';
+            el.textContent = items[Math.floor(Math.random() * items.length)];
+            el.style.left = Math.random() * 100 + '%';
+            el.style.fontSize = (Math.random() * 30 + 14) + 'px';
+            el.style.animationDuration = (Math.random() * 20 + 14) + 's';
+            el.style.animationDelay = (Math.random() * 15) + 's';
+            el.style.opacity = (Math.random() * 0.12 + 0.06);
+            container.appendChild(el);
+        }
+    </script>
+
+</body>
+</html>
