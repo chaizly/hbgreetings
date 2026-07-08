@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>С 45-летием, Мама!</title>
     
-    <!-- ШРИФТЫ С GOOGLE FONTS -->
+    <!-- ПОДКЛЮЧАЕМ КРАСИВЫЕ ШРИФТЫ -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     
     <style>
-        /* Базовый сброс */
         * {
             margin: 0;
             padding: 0;
@@ -22,18 +21,17 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            padding: 20px;
+            padding: 12px;
             font-family: 'Playfair Display', serif;
         }
 
-        /* Основная карточка */
         .card {
             max-width: 900px;
             width: 100%;
             background: rgba(255, 252, 250, 0.92);
             backdrop-filter: blur(12px);
             border-radius: 60px 60px 40px 40px;
-            padding: 50px 45px 40px;
+            padding: 40px 35px 35px;
             box-shadow: 
                 0 40px 80px rgba(0, 0, 0, 0.12),
                 0 0 0 1px rgba(212, 175, 55, 0.15),
@@ -46,11 +44,10 @@
             transform: translateY(-4px);
         }
 
-        /* ЗАГОЛОВОК*/
         h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: 3.2rem;
+            font-size: 3rem;
             text-align: center;
             background: linear-gradient(135deg, #8B2F4E, #C0395A, #8B2F4E);
             background-size: 200% 200%;
@@ -59,7 +56,7 @@
             background-clip: text;
             animation: shimmer 4s ease-in-out infinite;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.2;
         }
 
@@ -68,18 +65,17 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Подзаголовок — изящный курсив */
         .subtitle {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
             font-style: italic;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             text-align: center;
             color: #7a5a5a;
             letter-spacing: 3px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 18px;
+            padding-bottom: 16px;
             position: relative;
         }
 
@@ -95,7 +91,8 @@
             font-size: 1.2rem;
         }
 
-        /* ВИДЕО-КОНТЕЙНЕР — строгий 16:9 */
+        /* ===== ВИДЕО КОНТЕЙНЕР ===== */
+        /* Специально для 6.5" iPhone — больше отступы, крупнее */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -104,10 +101,10 @@
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.15),
+                0 25px 60px rgba(0, 0, 0, 0.18),
                 0 0 0 3px rgba(255, 215, 0, 0.15),
                 0 0 0 6px rgba(255, 255, 255, 0.5);
-            margin: 10px 0 30px;
+            margin: 5px 0 25px;
             background: #1a1a1a;
         }
 
@@ -117,39 +114,45 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* видео заполняет контейнер без искажений */
+            object-fit: cover;
             display: block;
             background: #1a1a1a;
         }
 
-        /* Кастомные элементы управления*/
+        /* Управление видео — крупнее для удобства на большом экране */
         .video-wrapper video::-webkit-media-controls {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 0 0 32px 32px;
         }
 
-        /* ПОДПИСЬ ПОД ВИДЕО */
+        .video-wrapper video::-webkit-media-controls-play-button {
+            transform: scale(1.2);
+        }
+
+        .video-wrapper video::-webkit-media-controls-volume-slider {
+            width: 80px;
+        }
+
         .video-caption {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             font-style: italic;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             text-align: center;
             color: #6d4c4c;
             letter-spacing: 1.5px;
-            margin-top: -15px;
-            margin-bottom: 30px;
+            margin-top: -10px;
+            margin-bottom: 28px;
             opacity: 0.8;
         }
 
         .video-caption span {
             background: rgba(255, 215, 0, 0.1);
-            padding: 4px 24px;
+            padding: 4px 28px;
             border-radius: 50px;
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        /* ТЕКСТ ПОЗДРАВЛЕНИЯ */
         .poem {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
@@ -162,7 +165,6 @@
             border-radius: 40px;
             border-left: 4px solid #c9a84c;
             border-right: 4px solid #c9a84c;
-            position: relative;
             margin: 20px 0 25px;
         }
 
@@ -179,7 +181,6 @@
             text-shadow: 0 2px 8px rgba(201, 168, 76, 0.2);
         }
 
-        /* ФИНАЛЬНАЯ СТРОКА*/
         .footer {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
@@ -206,7 +207,7 @@
             color: #c9a84c;
         }
 
-        /* ЛЕТАЮЩИЕ СЕРДЕЧКИ (фон)*/
+        /* Плавающие элементы */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -233,10 +234,73 @@
             100% { transform: translateY(-120vh) rotate(720deg) scale(1.2); opacity: 0; }
         }
 
-        /* МАЛЕНЬКИЙ ЭКРАН (телефон) */
+        /* ===== АДАПТАЦИЯ ДЛЯ 6.5" iPhone ===== */
+        /* Это сработает на всех больших iPhone (XS Max, 11 Pro Max, 12/13/14/15 Pro Max) */
+        @media only screen and (min-device-width: 414px) and (max-device-width: 428px) and (min-device-height: 896px) and (-webkit-min-device-pixel-ratio: 3) {
+            
+            .card {
+                padding: 35px 25px 30px;
+                border-radius: 50px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+
+            .video-wrapper {
+                border-radius: 28px;
+                margin: 5px 0 20px;
+                box-shadow: 
+                    0 20px 50px rgba(0, 0, 0, 0.2),
+                    0 0 0 3px rgba(255, 215, 0, 0.15),
+                    0 0 0 5px rgba(255, 255, 255, 0.4);
+            }
+
+            .video-wrapper video::-webkit-media-controls {
+                border-radius: 0 0 28px 28px;
+            }
+
+            .video-caption {
+                font-size: 1.2rem;
+                margin-bottom: 22px;
+            }
+
+            .poem {
+                font-size: 1.2rem;
+                padding: 25px 16px;
+                line-height: 1.9;
+                border-radius: 32px;
+            }
+
+            .poem .age {
+                font-size: 1.6rem;
+            }
+
+            .footer {
+                font-size: 1.4rem;
+            }
+
+            .footer .signature {
+                font-size: 1.1rem;
+            }
+
+            .float-item {
+                font-size: 22px;
+                opacity: 0.08;
+            }
+        }
+
+        /* ===== ДЛЯ ВСЕХ ТЕЛЕФОНОВ (универсально) ===== */
         @media (max-width: 600px) {
             .card {
-                padding: 25px 18px 30px;
+                padding: 28px 18px 25px;
                 border-radius: 40px;
             }
 
@@ -245,34 +309,42 @@
             }
 
             .subtitle {
-                font-size: 1.2rem;
-                letter-spacing: 1px;
-            }
-
-            .poem {
                 font-size: 1.1rem;
-                padding: 20px 15px;
-                line-height: 1.8;
+                letter-spacing: 1px;
+                margin-bottom: 20px;
             }
 
-            .poem .age {
-                font-size: 1.4rem;
+            .video-wrapper {
+                border-radius: 24px;
+                margin: 5px 0 18px;
             }
 
-            .footer {
-                font-size: 1.3rem;
+            .video-wrapper video::-webkit-media-controls {
+                border-radius: 0 0 24px 24px;
             }
 
             .video-caption {
                 font-size: 1.0rem;
+                margin-bottom: 18px;
             }
 
-            .video-wrapper {
-                border-radius: 20px;
+            .poem {
+                font-size: 1.0rem;
+                padding: 20px 14px;
+                line-height: 1.8;
+                border-radius: 28px;
             }
 
-            .video-wrapper video::-webkit-media-controls {
-                border-radius: 0 0 20px 20px;
+            .poem .age {
+                font-size: 1.3rem;
+            }
+
+            .footer {
+                font-size: 1.2rem;
+            }
+
+            .footer .signature {
+                font-size: 1.0rem;
             }
 
             .float-item {
@@ -281,7 +353,7 @@
             }
         }
 
-        /* Для очень больших экранов — ограничиваем ширину */
+        /* ДЛЯ БОЛЬШИХ ЭКРАНОВ (планшеты, ПК) */
         @media (min-width: 1400px) {
             .card {
                 max-width: 1000px;
@@ -304,20 +376,18 @@
         <div class="video-wrapper">
             <video controls preload="metadata" playsinline>
                 <source src="video.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео. Пожалуйста, обновите его.
+                Ваш браузер не поддерживает видео.
             </video>
         </div>
 
-        <!-- Подпись под видео -->
         <div class="video-caption">
-            <span>✨ немного волшебства... ✨</span>
+            <span>✨ немножко магии ✨</span>
         </div>
 
-        <!-- Текст поздравления -->
         <div class="poem">
             Мамочка, <span class="highlight">наша великолепная</span>,<br>
             Сегодня тебе — <span class="age">45</span> — прекрасный возраст!<br>
-            Ты — наш уют, нежность и свет,<br>
+            Ты — наш уют, наша нежность и свет,<br>
             Человек, дороже которого нет.<br><br>
             Пусть каждый день дарит <span class="highlight">радость и тепло</span>,<br>
             А сердце всегда будет <span class="highlight">молодым</span>.<br>
@@ -332,7 +402,6 @@
     </div>
 
     <script>
-        // Генерируем красивые парящие элементы (золотые и розовые)
         const container = document.getElementById('floatContainer');
         const items = ['✦', '✧', '❤️', '🌸', '🌹', '✨', '•'];
         
